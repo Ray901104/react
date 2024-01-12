@@ -1,8 +1,8 @@
 import {useRef, useState} from "react";
 
 const DiaryEditor = ({onCreate}) => {
-    const authorInput = useRef();
-    const contentTextarea = useRef();
+    const authorInput = useRef(null);
+    const contentTextarea = useRef(null);
 
     const [state, setState] = useState({
         author: "",
