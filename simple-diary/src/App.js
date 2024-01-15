@@ -41,16 +41,15 @@ function App() {
         setData((data) => [newItem, ...data]);
     }, []);
 
-    const onRemove = (targetId) => {
-        const newDiaryList = data.filter((item) => item.id !== targetId);
-        setData(newDiaryList);
-    };
+    const onRemove = useCallback((targetId) => {
+        setData((data) => data.filter((item) => item.id !== targetId));
+    }, []);
 
-    const onEdit = (targetId, newContent) => {
-        setData(
+    const onEdit = useCallback((targetId, newContent) => {
+        setData((data) =>
             data.map((item) => item.id === targetId ? {...item, content: newContent} : item)
         );
-    };
+    }, []);
 
     const getDiaryAnalysis = useMemo(() => {
         const goodCount = data.filter((item) => item.emotion >= 3).length;
