@@ -4,7 +4,6 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
 import Edit from "./pages/Edit";
 import New from "./pages/New";
-import LinkComponent from "./components/LinkComponent";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
                 <Route path="/edit" element={<Edit />}/>
                 <Route path="/new" element={<New />}/>
             </Routes>
-            <LinkComponent />
         </div>
       </BrowserRouter>
   );
