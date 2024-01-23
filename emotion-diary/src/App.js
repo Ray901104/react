@@ -23,7 +23,7 @@ const reducer = (state, action) => {
             break;
         }
         case "EDIT": {
-            newState = state.map((item) => item.id === action.id ? {...action.data} : item);
+            newState = state.map((item) => item.id === action.data.id ? {...action.data} : item);
             break;
         }
         default:
@@ -116,7 +116,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />}/>
                         <Route path="/diary/:id" element={<Diary />}/>
-                        <Route path="/edit" element={<Edit />}/>
+                        <Route path="/edit/:id" element={<Edit />}/>
                         <Route path="/new" element={<New />}/>
                     </Routes>
                 </div>
