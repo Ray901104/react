@@ -4,38 +4,8 @@ import MyHeader from "./MyHeader";
 import MyButton from "./MyButton";
 import EmotionItem from "./EmotionItem";
 import {DiaryDispatchContext} from "../App";
-
-const emotionList = [
-    {
-        emotion_id: 1,
-        emotion_img: process.env.PUBLIC_URL + `/assets/emotion1.png`,
-        emotion_description: "완전 좋음",
-    },
-    {
-        emotion_id: 2,
-        emotion_img: process.env.PUBLIC_URL + `/assets/emotion2.png`,
-        emotion_description: "좋음",
-    },
-    {
-        emotion_id: 3,
-        emotion_img: process.env.PUBLIC_URL + `/assets/emotion3.png`,
-        emotion_description: "그럭저럭",
-    },
-    {
-        emotion_id: 4,
-        emotion_img: process.env.PUBLIC_URL + `/assets/emotion4.png`,
-        emotion_description: "나쁨",
-    },
-    {
-        emotion_id: 5,
-        emotion_img: process.env.PUBLIC_URL + `/assets/emotion5.png`,
-        emotion_description: "끔찍함",
-    },
-]
-
-const getStringDate = (date) => {
-    return date.toISOString().slice(0, 10);
-}
+import {getStringDate} from "../util/date";
+import {emotionList} from "../util/emotion";
 
 const DiaryEditor = ({isEdit, originData}) => {
     const contentRef = useRef(null);
@@ -43,6 +13,7 @@ const DiaryEditor = ({isEdit, originData}) => {
     const [emotion, setEmotion] = useState(3);
     const [date, setDate] = useState(getStringDate(new Date()));
     const navigate = useNavigate();
+    const emotionListData = emotionList;
 
     const handleClickEmotion = (emotion) => {
         setEmotion(emotion);
@@ -90,7 +61,7 @@ const DiaryEditor = ({isEdit, originData}) => {
                 <section>
                     <h4>오늘의 감정</h4>
                     <div className="input_box emotion_list_wrapper">
-                        {emotionList.map((item) => (
+                        {emotionListData.map((item) => (
                          <EmotionItem key={item.emotion_id} {...item} onClick={handleClickEmotion} isSelected={item.emotion_id === emotion} />
                         ))}
                     </div>
